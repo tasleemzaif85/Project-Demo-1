@@ -1,0 +1,72 @@
+{
+  "project": {
+    "id": 8,
+    "name": "Project-Demo-1",
+    "description": "API Load Test",
+    "uuid": "453832"
+  },
+  "collection": {
+    "id": 11,
+    "name": "Project Demo 1 API Collection",
+    "description": "Project Demo 1 API Collection",
+    "source_type": "postman",
+    "environments": [
+      "QA",
+      "UAT"
+    ],
+    "endpoint_count": 4
+  },
+  "environment": "UAT",
+  "rules": [
+    {
+      "id": 9,
+      "metric": "Response Time",
+      "operator": "between",
+      "unit": "ms",
+      "severity": "warning",
+      "value_min": "500",
+      "value_max": "600"
+    },
+    {
+      "id": 10,
+      "metric": "Response Time",
+      "operator": ">",
+      "unit": "ms",
+      "severity": "error",
+      "value": "600"
+    },
+    {
+      "id": 11,
+      "metric": "Error Rate",
+      "operator": ">",
+      "unit": "%",
+      "severity": "error",
+      "value": "5"
+    }
+  ],
+  "test_plans": [
+    {
+      "id": 17,
+      "name": "Project-Demo-API-Test-Plan",
+      "engine": "jmeter",
+      "test_type": "load",
+      "vusers": 5,
+      "rampup": 5,
+      "iter_mode": "duration",
+      "loops": 1,
+      "duration": 60,
+      "status": "pending"
+    }
+  ],
+  "config": {
+    "urls": [
+      {
+        "protocol": "https",
+        "url": "dummyjson.com",
+        "port": "443"
+      }
+    ],
+    "jmeter_docker_image": "tasleemzaif/perfstudio:latest",
+    "k6_docker_image": "tasleemzaif/perfstudio:latest"
+  }
+}
